@@ -21,6 +21,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
+    Auton("Drive Tune", tune_drive),
   });
 
   catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -45,7 +46,8 @@ void autonomous() {
   chassis.reset_drive_sensor(); // Reset drive sensors to 0
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD); // Set motors to hold.  This helps autonomous consistency.
 
-  ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
+//  ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
+  tune_drive();
 }
 
 
